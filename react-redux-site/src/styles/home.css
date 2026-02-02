@@ -1,4 +1,4 @@
-/* В файле home.css или в глобальном стиле */
+
 body.light {
     background-color: #ffffff;
     color: #000000;
@@ -9,7 +9,7 @@ body.dark {
     color: #ffffff;
 }
 
-/* Стили для header в разных темах */
+
 body.light .header {
     background-color: #f8f9fa;
     border-bottom: 1px solid #ccc;
@@ -30,7 +30,7 @@ body.dark .footer {
     border-top: 1px solid #444;
 }
 
-/* Стили для кнопки темы */
+
 body.light .theme-btn {
     background-color: #f0f0f0;
     color: #333;
@@ -43,7 +43,7 @@ body.dark .theme-btn {
     border: 1px solid #666;
 }
 
-/* Стили для ссылок */
+
 body.light a {
     color: #0066cc;
 }

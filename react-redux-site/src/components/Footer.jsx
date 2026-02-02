@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <div className="container">
-                <p>2026 мой сайт на REDUX </p>
+                <p> Coffee X REDUX </p>
 
             <div className="footer-links">
                 <a href="#">О нас </a>
