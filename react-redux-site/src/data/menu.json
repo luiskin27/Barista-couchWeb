@@ -1,0 +1,54 @@
+{
+  "drinks": [
+    {
+      "id": 1,
+      "name": "Iced Matcha Latte",
+      "price": 320,
+      "description": "Классический айсд матча латте на растительном молоке с лёгкой пенкой",
+      "image": "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?w=800",
+      "category": "Matcha",
+      "calories": 180,
+      "size": "Grande"
+    },
+    {
+      "id": 2,
+      "name": "Caramel Latte",
+      "price": 280,
+      "description": "Ароматный латте с карамельным сиропом и взбитыми сливками",
+      "image": "https://images.unsplash.com/photo-1512568400610-62da28bc8a13?w=800",
+      "category": "Coffee",
+      "calories": 320,
+      "size": "Grande"
+    },
+    {
+      "id": 3,
+      "name": "Hot Matcha",
+      "price": 290,
+      "description": "Горячий матча с кремовой текстурой и натуральным вкусом",
+      "image": "https://www.justonecookbook.com/wp-content/uploads/2025/12/Matcha-Latte-4598-I-2-500x375.jpg",
+      "category": "Matcha",
+      "calories": 140,
+      "size": "Tall"
+    },
+    {
+      "id": 4,
+      "name": "Mocha Frappuccino",
+      "price": 350,
+      "description": "Холодный мокко фраппе с шоколадом и взбитыми сливками",
+      "image": "https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?w=800",
+      "category": "Frappuccino",
+      "calories": 450,
+      "size": "Venti"
+    },
+    {
+      "id": 5,
+      "name": "Espresso",
+      "price": 180,
+      "description": "Классический крепкий эспрессо двойной",
+      "image": "https://west4.coffee/uploads/blog/article/104/c291_2020-11-20_11-25-45.jpg",
+      "category": "Coffee",
+      "calories": 5,
+      "size": "Solo"
+    }
+  ]
+}

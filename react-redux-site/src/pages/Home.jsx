@@ -1,23 +1,34 @@
+// src/pages/Home.jsx  
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import MenuSection from "../components/MenuSection";  // ← НОВОЕ
 import "../styles/home.css";
 
 const Home = () => {
-    const theme = useSelector(state => state.ui.theme);
+  const theme = useSelector(state => state.ui.theme);
+  
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
+  return (
+    <main className="home container">
     
-    useEffect(() => {
-        console.log("Тема изменилась:", theme);
-        document.body.className = theme;
-    }, [theme]);
+      <section className="welcome">
+        <h2>Добро пожаловать в MatchaLatte</h2>
+        <p>Выберите свой идеальный напиток дня</p>
+      </section>
 
-    console.log("Текущая тема в компоненте:", theme);
+   
+      <MenuSection />
 
-    return (
-        <main className="home container">
-            {/* <h2>Главная страница</h2>
-            <p>Добро пожаловать</p> */}
-        </main>
-    )
+      
+      <section className="promo">
+        <h3>Акция недели</h3>
+        <p>Скидка 20% на все матча-напитки по понедельникам!</p>
+      </section>
+    </main>
+  );
 };
 
 export default Home;
