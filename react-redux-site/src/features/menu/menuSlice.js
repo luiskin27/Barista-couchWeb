@@ -1,6 +1,6 @@
-// src/features/menu/menuSlice.js   ← НОВЫЙ файл
+// src/features/menu/menuSlice.js   
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import menuData from '../../data/menu.json';  // импортируем JSON
+import menuData from '../../data/menu.json';  
 
 // Имитация асинхронной загрузки (задержка 1.5 секунды)
 export const fetchMenu = createAsyncThunk(
@@ -20,7 +20,7 @@ const menuSlice = createSlice({
     items: [],
     status: 'idle',      // idle | loading | succeeded | failed
     error: null,
-    selectedDrink: null  // для DETAIL
+    selectedDrink: null  
   },
   reducers: {
     selectDrink: (state, action) => {
@@ -28,8 +28,33 @@ const menuSlice = createSlice({
     },
     clearSelected: (state) => {
       state.selectedDrink = null;
+    },
+
+
+//  CRUD 
+    addDrink: (state, action) => {
+      const maxId = state.items.length > 0 
+        ? Math.max(...state.items.map(d => d.id)) 
+        : 0;
+      const newDrink = {
+        id: maxId + 1,
+        ...action.payload
+      };
+      state.items.push(newDrink);
+    },
+    updateDrink: (state, action) => {
+      const index = state.items.findIndex(d => d.id === action.payload.id);
+      if (index !== -1) {
+        state.items[index] = action.payload;   // полностью заменяем объект
+      }
+    },
+    deleteDrink: (state, action) => {
+      state.items = state.items.filter(d => d.id !== action.payload);
     }
+    
   },
+
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchMenu.pending, (state) => {
@@ -46,5 +71,5 @@ const menuSlice = createSlice({
   }
 });
 
-export const { selectDrink, clearSelected } = menuSlice.actions;
+export const { selectDrink, clearSelected, addDrink, updateDrink, deleteDrink } = menuSlice.actions;
 export default menuSlice.reducer;

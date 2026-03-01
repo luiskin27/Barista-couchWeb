@@ -1,7 +1,8 @@
 // src/pages/Home.jsx  
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import MenuSection from "../components/MenuSection";  // ← НОВОЕ
+import MenuSection from "../components/MenuSection"; 
+import AdminPanel from "../components/AdminPanel"; 
 import "../styles/home.css";
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
    
       <MenuSection />
 
+      <AdminPanel />
       
       <section className="promo">
         <h3>Акция недели</h3>
