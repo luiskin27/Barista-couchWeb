@@ -9,23 +9,25 @@ const Header = () => {
     <header className="header">
       <div className="header-inner container">
       
-        <div className="logo">
-          <img
-            src="/src/assets/starbucks-logo.png"  
-            alt="Coffee Shop Logo"
-            className="logo-img"
-          />
-          <span className="logo-text">MatchaLatte</span>  
-        </div>
+
+<div className="logo">
+  <img src="/src/assets/starbucks-logo.png" alt="Barista Trainer" className="logo-img" />
+  <span className="logo-text">Barista Trainer</span>
+</div>
+
+<nav className="nav">
+  <a href="/" className="nav-link">Главная</a>
+  <a href="/recipes" className="nav-link">Рецепты</a>
+  <a href="https://forms.gle/ВАШ_ССЫЛКА_НА_FORM" target="_blank" className="nav-link quiz-btn">
+    Quiz
+  </a>
+  <a href="/#recipes" className="nav-link">Добавить рецепт</a>
+</nav>
+
 
        
         <nav className="nav">
-          <a href="#" className="nav-link">Главная</a>
-          <a href="#" className="nav-link">Меню</a>
-          <a href="#" className="nav-link">О нас</a>
-          <a href="#" className="nav-link">Магазин</a>
-          <a href="#" className="nav-link">Блог</a>
-          <a href="#" className="nav-link">Контакты</a>
+          
         </nav>
 
         

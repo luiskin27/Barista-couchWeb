@@ -1,20 +1,17 @@
 import "../styles/footer.css";
 
-
 const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="container">
-                <p> Coffee X REDUX </p>
-
-            <div className="footer-links">
-                <a href="#">О нас </a>
-                <a href="#"> Контакты </a>
-            </div>
-
-            </div>
-        </footer>
-    )
-}
+  return (
+    <footer className="footer">
+      <div className="container">
+        <p>Barista Trainer © 2026</p>
+        <div className="footer-links">
+          <a href="#">О нас</a>
+          <a href="#">Контакты</a>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer

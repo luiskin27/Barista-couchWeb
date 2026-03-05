@@ -21,6 +21,12 @@
   z-index: 1000;
   padding: 12px 0;
 }
+.quiz-btn {
+  background: #006241;
+  color: white !important;
+  padding: 6px 14px;
+  border-radius: 30px;
+}
 
 .header-inner {
   display: flex;

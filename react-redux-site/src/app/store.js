@@ -1,11 +1,13 @@
-// src/app/store.js   
-import { configureStore } from '@reduxjs/toolkit';
-import uiReducer from '../features/ui/uiSlice';          
-import menuReducer from '../features/menu/menuSlice';    
+// src/app/store.js
+import { configureStore } from '@reduxjs/toolkit'; 
 
+import recipeReducer from '../features/recipe/recipeSlice';  
+
+import uiReducer from '../features/ui/uiSlice';  
 export const store = configureStore({
   reducer: {
-    ui: uiReducer,
-    menu: menuReducer,   
+    recipes: recipeReducer,   
+    ui: uiReducer,            
+  
   },
 });

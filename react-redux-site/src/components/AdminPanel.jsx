@@ -1,113 +1,139 @@
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addDrink, updateDrink, deleteDrink } from '../features/menu/menuSlice';
-import '../styles/admin.css';
+import { addRecipe } from '../features/recipe/recipeSlice';
+
+import '../styles/admin.css'; // если есть стили — подключи, иначе удали строку
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
-  const items = useSelector(state => state.menu.items);
 
-  const [formData, setFormData] = useState({
-    name: '', price: '', description: '', image: '', 
-    category: '', calories: '', size: ''
-  });
-  const [editingId, setEditingId] = useState(null);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
+  const [grains, setGrains] = useState('');
+  const [milk, setMilk] = useState('');
+  const [temperature, setTemperature] = useState('');
+  const [ingredients, setIngredients] = useState('');
+  const [steps, setSteps] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const drinkData = {
-      name: formData.name,
-      price: Number(formData.price),
-      description: formData.description,
-      image: formData.image,
-      category: formData.category,
-      calories: Number(formData.calories),
-      size: formData.size,
+
+    // Простая валидация (можно расширить)
+    if (!name.trim() || !image.trim()) {
+      alert('Название и URL картинки обязательны!');
+      return;
+    }
+
+    const newRecipe = {
+      // id генерируем в slice (там уже есть логика maxId + 1), поэтому можно без id здесь
+      name: name.trim(),
+      image: image.trim(),
+      grains: grains.trim(),
+      milk: milk.trim(),
+      temperature: temperature.trim(),
+      ingredients: ingredients
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean),
+      steps: steps
+        .split('\n')
+        .map(line => line.trim())
+        .filter(Boolean),
     };
 
-    if (editingId) {
-      dispatch(updateDrink({ id: editingId, ...drinkData }));
-      setEditingId(null);
-    } else {
-      dispatch(addDrink(drinkData));
-    }
+    dispatch(addRecipe(newRecipe));
 
-    // очистка формы
-    setFormData({
-      name: '', price: '', description: '', image: '', 
-      category: '', calories: '', size: ''
-    });
-  };
+    // Очистка формы после успешного добавления
+    setName('');
+    setImage('');
+    setGrains('');
+    setMilk('');
+    setTemperature('');
+    setIngredients('');
+    setSteps('');
 
-  const handleEdit = (drink) => {
-    setFormData({
-      name: drink.name,
-      price: drink.price,
-      description: drink.description,
-      image: drink.image,
-      category: drink.category,
-      calories: drink.calories,
-      size: drink.size,
-    });
-    setEditingId(drink.id);
-  };
-
-  const handleDelete = (id) => {
-    if (window.confirm('Точно удалить этот напиток?')) {
-      dispatch(deleteDrink(id));
-    }
+    alert('Рецепт добавлен!'); // или красивый toast позже
   };
 
   return (
-    <section className="admin-panel container">
-      <h2>Админ-панель: Управление меню </h2>
-
-      <form onSubmit={handleSubmit} className="admin-form">
-        <h3>{editingId ? 'Редактировать напиток' : 'Добавить новый напиток'}</h3>
-        
-        <input name="name" placeholder="Название" value={formData.name} onChange={handleChange} required />
-        <input name="price" type="number" placeholder="Цена (сом)" value={formData.price} onChange={handleChange} required />
-        <input name="description" placeholder="Описание" value={formData.description} onChange={handleChange} required />
-        <input name="image" placeholder="URL картинки" value={formData.image} onChange={handleChange} required />
-        <input name="category" placeholder="Категория (Matcha / Coffee / Frappuccino)" value={formData.category} onChange={handleChange} required />
-        <input name="calories" type="number" placeholder="Калории" value={formData.calories} onChange={handleChange} required />
-        <input name="size" placeholder="Размер (Tall / Grande / Venti)" value={formData.size} onChange={handleChange} required />
-
-        <div className="form-buttons">
-          <button type="submit" className="submit-btn">
-            {editingId ? 'Сохранить изменения' : 'Добавить напиток'}
-          </button>
-          {editingId && (
-            <button type="button" className="cancel-btn" onClick={() => {
-              setEditingId(null);
-              setFormData({ name:'', price:'', description:'', image:'', category:'', calories:'', size:'' });
-            }}>
-              Отмена
-            </button>
-          )}
+    <section className="admin container" style={{ padding: '60px 20px' }}>
+      <h2>Добавить новый рецепт для тренировки</h2>
+      
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Название рецепта *</label>
+          <input
+            type="text"
+            placeholder="Например: Flat White"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
         </div>
+
+        <div className="form-group">
+          <label>URL картинки *</label>
+          <input
+            type="url"
+            placeholder="https://images.unsplash.com/..."
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Зерна / основа</label>
+          <input
+            type="text"
+            placeholder="100% арабика, средняя обжарка"
+            value={grains}
+            onChange={(e) => setGrains(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Молоко</label>
+          <input
+            type="text"
+            placeholder="Цельное коровье 3.2% / овсяное"
+            value={milk}
+            onChange={(e) => setMilk(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Ключевые температуры</label>
+          <input
+            type="text"
+            placeholder="Эспрессо 92–94 °C, молоко 60–65 °C"
+            value={temperature}
+            onChange={(e) => setTemperature(e.target.value)}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Ингредиенты (каждый с новой строки)</label>
+          <textarea
+            placeholder="18 г кофе&#10;60 мл воды&#10;150 мл молока"
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}
+            rows={5}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Шаги приготовления (каждый с новой строки)</label>
+          <textarea
+            placeholder="1. Приготовить эспрессо&#10;2. Взбить молоко до 65 °C&#10;3. Собрать в чашку"
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
+            rows={8}
+          />
+        </div>
+
+        <button type="submit">Добавить рецепт</button>
       </form>
-
-      <div className="admin-list">
-        <h3>Все напитки ({items.length})</h3>
-        <div className="admin-grid">
-          {items.map(drink => (
-            <div key={drink.id} className="admin-card">
-              <img src={drink.image} alt={drink.name} />
-              <h4>{drink.name}</h4>
-              <p className="price">{drink.price} сом</p>
-              <div className="card-actions">
-                <button onClick={() => handleEdit(drink)} className="edit-btn"> Редактировать</button>
-                <button onClick={() => handleDelete(drink.id)} className="delete-btn"> Удалить</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };
