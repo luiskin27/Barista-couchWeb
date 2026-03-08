@@ -1,6 +1,6 @@
 .admin {
   padding: 60px 20px;
-  background-color: #f9f9f9; /* лёгкий фон как в кофейне */
+  background-color: #f9f9f9; 
   border-top: 1px solid #e0e0e0;
 }
 
@@ -65,7 +65,7 @@ button[type="submit"]:hover {
   background-color: #00704a;
 }
 
-/* Для мобильки */
+
 @media (max-width: 768px) {
   .admin {
     padding: 40px 16px;

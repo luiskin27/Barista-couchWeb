@@ -1,7 +1,7 @@
  /* src/styles/recipes.css */
 .recipes-section {
   padding: 100px 20px 60px;
-  background: #f8f9fa; /* светлый фон как в кофейне */
+  background: #f8f9fa; 
 }
 
 .recipes-section h2 {

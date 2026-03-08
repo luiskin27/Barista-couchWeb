@@ -13,7 +13,7 @@ const HeroNew = () => {
       
       <div className="hero-images">
         <img src="https://cdn.loveandlemons.com/wp-content/uploads/2023/06/iced-matcha-latte.jpg" alt="Iced Matcha Latte" className="hero-img" />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN9l75rAU88oMozXXxdcOI35-YQxvWPoxPfA&s" alt="Latte Art" className="hero-img" />
+        <img src="https://wearenotmartha.com/wp-content/uploads/strawberry-cheesecake-frappuccino-featured.jpg" alt="Latte Art" className="hero-img" />
       </div>
     </section>
   );

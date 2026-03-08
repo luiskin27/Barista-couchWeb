@@ -14,7 +14,7 @@ import '../styles/recipes.css';
 
 const RecipesSection = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // ← хук вызван здесь, на верхнем уровне компонента
+  const navigate = useNavigate(); 
 
   const { items, status, selectedRecipe } = useSelector(state => state.recipes);
 

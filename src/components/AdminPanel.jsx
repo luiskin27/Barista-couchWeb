@@ -25,7 +25,7 @@ const AdminPanel = ({ recipeId = null, isEditing = false }) => {
   const [ingredients, setIngredients] = useState('');
   const [steps, setSteps] = useState('');
 
-  // Заполняем форму данными рецепта
+  // форма ктр мы зополняем чтобы добавить рецепт 
   useEffect(() => {
     if (recipe) {
       setName(recipe.name || '');
@@ -36,7 +36,7 @@ const AdminPanel = ({ recipeId = null, isEditing = false }) => {
       setIngredients(recipe.ingredients?.join('\n') || '');
       setSteps(recipe.steps?.join('\n') || '');
     } else if (!isEditing) {
-      // Очищаем, если это добавление
+      
       setName('');
       setImage('');
       setGrains('');
@@ -66,12 +66,12 @@ const AdminPanel = ({ recipeId = null, isEditing = false }) => {
     };
 
     if (isEditing && recipe) {
-      // Обновляем существующий рецепт
+      // обновляем существующий рецепт
       dispatch(updateRecipe({ ...recipeData, id: recipe.id }));
       alert('Рецепт обновлён!');
       navigate('/recipes'); // возвращаем на список рецептов
     } else {
-      // Добавляем новый
+      
       dispatch(addRecipe(recipeData));
       alert('Рецепт добавлен!');
       navigate('/recipes');

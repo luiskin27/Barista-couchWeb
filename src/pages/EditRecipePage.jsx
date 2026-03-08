@@ -1,6 +1,6 @@
 // src/pages/EditRecipePage.jsx
 import { useParams, useNavigate } from 'react-router-dom';
-import AdminPanel from '../components/AdminPanel'; // правильный путь
+import AdminPanel from '../components/AdminPanel'; 
 
 const EditRecipePage = () => {
   const { recipeId } = useParams();
