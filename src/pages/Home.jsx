@@ -16,10 +16,7 @@ const Home = () => {
   return (
     <main className="home container">
     
-      <section className="welcome">
-        <h2>Добро пожаловать в MatchaLatte</h2>
-        <p>Выберите свой идеальный напиток дня</p>
-      </section>
+      
 
    
       {/* <MenuSection /> */}

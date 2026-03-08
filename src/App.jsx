@@ -4,14 +4,21 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import RecipesPage from "./pages/RecipesPage"; 
 import EditRecipePage from "./pages/EditRecipePage";
+import HeroNew from './components/HeroNew';
 
 function App() {
   return (
     <Router>
       <Header />
-  
+     
 <Routes>
-  <Route path="/" element={<Home />} />
+  <Route path="/" element={
+    <>
+      <HeroNew />
+      <Home />
+    </>
+  } />
+
   <Route path="/recipes" element={<RecipesPage />} />
   <Route path="/edit/:recipeId" element={<EditRecipePage />} />  
 </Routes>
